@@ -18,3 +18,6 @@ $extra_fields =  array(
   array( 'wordpress', __('WordPress.org Username', 'rc_cucm'), false ),
   array( 'phone', __('Phone Number', 'rc_cucm'), true )
 );
+
+// Use the user_contactmethods to add new fields
+add_filter( 'user_contactmethods', 'rc_add_user_contactmethods' );
