@@ -1,2 +1,1 @@
-# custom-user-contact-methods
-Custom User Contact Methods
+# Custom User Contact Methods
