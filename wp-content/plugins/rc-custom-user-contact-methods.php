@@ -26,7 +26,7 @@ add_filter( 'user_contactmethods', 'rc_add_user_contactmethods' );
  * @access public
  * @since 1.0
  * @return void
-*/
+ */
 function rc_add_user_contactmethods( $user_contactmethods ) {
   // Get fields
   global $extra_fields;
@@ -53,7 +53,7 @@ add_action( 'user_register', 'rc_user_register_save_extra_fields', 100 );
  * @access public
  * @since 1.0
  * @return void
-*/
+ */
 function rc_register_form_display_extra_fields() {
   // Get fields
   global $extra_fields;
@@ -72,3 +72,27 @@ function rc_register_form_display_extra_fields() {
     } // endif
   } // end foreach
 }
+
+/**
+ * Save field values
+ *
+ * @access public
+ * @since 1.0
+ * @return void
+ */
+function rc_user_register_save_extra_fields( $user_id, $password = '', $meta = array() )  {
+    // Get fields
+    global $extra_fields;
+    $userdata       = array();
+    $userdata['ID'] = $user_id;
+    
+    // Save each field
+    foreach( $extra_fields as $field ) {
+        if( $field[2] == true ) {
+            $userdata[ $field[0] ] = $_POST[ $field[0] ];
+        } // endif
+    } // end foreach
+    
+    $new_user_id = wp_update_user( $userdata );
+}
+
