@@ -41,3 +41,7 @@ function rc_add_user_contactmethods( $user_contactmethods ) {
   // Returns the contact methods
   return $user_contactmethods;
 }
+
+// Add our fields to the registration process
+add_action( 'register_form', 'rc_register_form_display_extra_fields' );
+add_action( 'user_register', 'rc_user_register_save_extra_fields', 100 );
