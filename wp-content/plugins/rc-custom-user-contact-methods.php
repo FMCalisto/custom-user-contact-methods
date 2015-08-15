@@ -20,3 +20,24 @@ $extra_fields =  array(
 
 // Use the user_contactmethods to add new fields
 add_filter( 'user_contactmethods', 'rc_add_user_contactmethods' );
+
+/**
+ * Add custom users custom contact methods
+ *
+ * @access public
+ * @since 1.0
+ * @return void
+*/
+
+function rc_add_user_contactmethods( $user_contactmethods ) {
+  // Get fields
+  global $extra_fields;
+  
+  // Display each fields
+  foreach( $extra_fields as $field ) {
+    if ( !isset( $contactmethods[ $field[0] ] ) )
+      $user_contactmethods[ $field[0] ] = $field[1];
+  }
+  // Returns the contact methods
+  return $user_contactmethods;
+}
