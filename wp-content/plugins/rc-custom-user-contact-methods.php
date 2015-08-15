@@ -81,18 +81,18 @@ function rc_register_form_display_extra_fields() {
  * @return void
  */
 function rc_user_register_save_extra_fields( $user_id, $password = '', $meta = array() )  {
-    // Get fields
-    global $extra_fields;
-    $userdata       = array();
-    $userdata['ID'] = $user_id;
-    
-    // Save each field
-    foreach( $extra_fields as $field ) {
-        if( $field[2] == true ) {
-            $userdata[ $field[0] ] = $_POST[ $field[0] ];
-        } // endif
-    } // end foreach
-    
-    $new_user_id = wp_update_user( $userdata );
+  // Get fields
+  global $extra_fields;
+  $userdata       = array();
+  $userdata['ID'] = $user_id;
+  
+  // Save each field
+  foreach( $extra_fields as $field ) {
+    if( $field[2] == true ) {
+      $userdata[ $field[0] ] = $_POST[ $field[0] ];
+    } // endif
+  } // end foreach
+  
+  $new_user_id = wp_update_user( $userdata );
 }
 
